@@ -2,16 +2,16 @@ import { Link } from "react-router-dom"
 
 export default function Footer() {
     return (
-        <footer className="bg-gray-900 text-gray-300 py-12 px-4">
+        <footer className="px-4 py-12 text-gray-300 bg-gray-900">
       <div className="container mx-auto">
         
         {/* --- Main Grid Section --- */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-12">
 
           {/* Block 1: Logo & Text (Spans 5 cols on desktop) */}
           <div className="md:col-span-5">
             <img 
-              src="/shia  WATERMARK.png" // Make sure this path is correct
+              src="/images/shia  WATERMARK.png" // Make sure this path is correct
               alt="Logo"
               className="h-12 mb-4" // 48px height
             />
@@ -46,7 +46,7 @@ export default function Footer() {
         </div>
 
         {/* --- Copyright Section --- */}
-        <div className="mt-12 pt-8 border-t border-gray-700">
+        <div className="pt-8 mt-12 border-t border-gray-700">
           <p className="text-sm text-gray-500">
             © All Right Reserved 2025.
           </p>

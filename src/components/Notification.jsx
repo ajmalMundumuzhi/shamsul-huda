@@ -17,10 +17,10 @@ export default function Notification() {
     const latestEvents = events ? events.slice(0, 4) : [];
 
     return (
-        <section className="m-5 md:m-10 p-6 md:p-10">
-            <h1 className="font-semibold text-4xl md:text-5xl mb-8">Activities & Events</h1>
+        <section className="p-6 m-5 md:m-10 md:p-10">
+            <h1 className="mb-8 text-4xl font-semibold md:text-5xl">Activities & Events</h1>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
 
                 {/* === COLUMN 1: Event Slider (Left Side) === */}
                 <article className="md:col-span-2 min-h-[400px]"> {/* Added min-height to prevent collapse */}
@@ -36,10 +36,10 @@ export default function Notification() {
                                 disableOnInteraction: false,
                             }}
                             pagination={{ clickable: true }}
-                            className="h-full rounded-lg shadow-lg overflow-hidden"
+                            className="h-full overflow-hidden rounded-lg shadow-lg"
                         >
                             {latestEvents.map((event) => (
-                                <SwiperSlide key={event._id} className="bg-white h-full flex flex-col">
+                                <SwiperSlide key={event._id} className="flex flex-col h-full bg-white">
                                     
                                     {/* Slide Image Section */}
                                     <div 
@@ -50,24 +50,24 @@ export default function Notification() {
                                                 : 'linear-gradient(to top, #4CAF50, #81C784)' 
                                         }}
                                     >
-                                        <div className="absolute top-4 right-4 text-xs font-medium bg-black/50 px-3 py-1 rounded-full">
+                                        <div className="absolute px-3 py-1 text-xs font-medium rounded-full top-4 right-4 bg-black/50">
                                             {new Date(event.createdAt).toLocaleDateString()}
                                         </div>
 
-                                        <h3 className="text-2xl md:text-3xl font-bold leading-tight mt-4">
+                                        <h3 className="mt-4 text-2xl font-bold leading-tight md:text-3xl">
                                             {event.title}
                                         </h3>
-                                        <p className="text-lg font-medium opacity-80 mt-1">
+                                        <p className="mt-1 text-lg font-medium opacity-80">
                                             Shamsul Huda Academy
                                         </p>
                                     </div>
 
                                     {/* Slide Text Section */}
-                                    <div className="p-4 md:p-6 bg-white flex-grow">
+                                    <div className="flex-grow p-4 bg-white md:p-6">
                                         <h4 className="text-xl font-semibold text-gray-800 truncate">
                                             {event.title}
                                         </h4>
-                                        <p className="text-sm text-gray-500 mt-1 line-clamp-2">
+                                        <p className="mt-1 text-sm text-gray-500 line-clamp-2">
                                             {event.description}
                                         </p>
                                     </div>
@@ -76,7 +76,7 @@ export default function Notification() {
                             ))}
                         </Swiper>
                     ) : (
-                        <div className="h-full bg-gray-100 rounded-lg flex items-center justify-center text-gray-500">
+                        <div className="flex items-center justify-center h-full text-gray-500 bg-gray-100 rounded-lg">
                             No Upcoming Events
                         </div>
                     )}
@@ -84,12 +84,12 @@ export default function Notification() {
 
                 {/* === COLUMN 2: Notification List (Right Side) === */}
                 <aside className="md:col-span-1">
-    <div className="bg-white rounded-lg shadow-xl p-5 border-t-4 border-orange-500 h-full">
+    <div className="h-full p-5 bg-white border-t-4 border-orange-500 rounded-lg shadow-xl">
         <div className="flex items-center mb-4">
             <img 
-                src="/src/images/SHAMSUL HUDA LOGO PNG.png" // Replace this with your actual file name
+                src="/images/SHAMSUL HUDA LOGO PNG.png" // Replace this with your actual file name
                 alt="Notification Icon" 
-                className="w-8 h-8 mr-3 object-contain" // Adjust width/height (w-8 h-8) as needed
+                className="object-contain w-8 h-8 mr-3" // Adjust width/height (w-8 h-8) as needed
             />
             
             <h3 className="text-2xl font-semibold text-orange-600">Notification</h3>
@@ -97,18 +97,18 @@ export default function Notification() {
 
         <ul className="space-y-4 text-sm text-gray-700 max-h-[400px] overflow-y-auto pr-2">
             {notifications?.map((note) => (
-                <li key={note._id} className="border-b border-gray-100 pb-2 last:border-0">
+                <li key={note._id} className="pb-2 border-b border-gray-100 last:border-0">
                     <p className="font-medium">
                         {note.title || note.message}
                     </p>
-                    <span className="text-xs text-gray-400 block mt-1">
+                    <span className="block mt-1 text-xs text-gray-400">
                         {new Date(note.createdAt).toLocaleDateString()}
                     </span>
                 </li>
             ))}
             
             {(!notifications || notifications.length === 0) && (
-                <p className="text-gray-400 italic">No new notifications.</p>
+                <p className="italic text-gray-400">No new notifications.</p>
             )}
         </ul>
     </div>
